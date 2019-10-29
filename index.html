@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <title>Bootstrap 3 input search</title>
+
+  <!-- See How do I clear a search box with an 'x' in bootstrap 3? http://stackoverflow.com/questions/20062218 -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+
+  <style>
+    #searchinput {
+      width: 200px;
+    }
+
+    #searchclear {
+      position: absolute;
+      right: 5px;
+      top: 0;
+      bottom: 0;
+      height: 14px;
+      margin: auto;
+      font-size: 14px;
+      cursor: pointer;
+      color: #ccc;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>HEllo HEllooooooooo prove git</h1>
+  <div class="btn-group">
+    <input id="searchinput" type="search"
+           class="form-control"
+           placeholder="Type something..."
+           value="">
+    <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#searchinput').keyup(function() {
+        $('#searchclear').toggle(Boolean($(this).val()));
+      });
+      $('#searchclear').toggle(Boolean($("#searchinput").val()));
+      $('#searchclear').click(function() {
+        $('#searchinput').val('HEKKO').focus();
+        $(this).hide();
+      });
+    });
+  </script>
 </body>
+
 </html>
